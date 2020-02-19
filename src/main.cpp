@@ -4,6 +4,7 @@
 
 #include "../include/CImg.h"
 
+
 using namespace cimg_library;
 
 static void 	help_output();
@@ -36,8 +37,12 @@ int main(int argc, char* argv[]) {
 				if (*digit_check) {
 					vertical_strip_count = 10;
 				} else {
-					vertical_strip_count = opt_val%2==0 ? opt_val : opt_val+1;
-					++i;
+					if ( opt_val == 0 ) {
+						std::cerr << "Vertical strip count can't be 0. Defaulting to 10." << std::endl;
+					} else {
+						vertical_strip_count = opt_val%2==0 ? opt_val : opt_val+1;
+						++i;
+					}
 				}
 				
 			}
@@ -50,8 +55,12 @@ int main(int argc, char* argv[]) {
 				if (*digit_check) {
 					horizontal_strip_count = 10;
 				} else {
-					horizontal_strip_count = opt_val%2==0 ? opt_val : opt_val+1;
-					++i;
+					if ( opt_val == 0 ) {
+						std::cerr << "Horizontal strip count can't be 0. Defaulting to 10." << std::endl;
+					} else {
+						horizontal_strip_count = opt_val%2==0 ? opt_val : opt_val+1;
+						++i;
+					}
 				}
 			}
 		} else if ( opt == "-o" ) {
